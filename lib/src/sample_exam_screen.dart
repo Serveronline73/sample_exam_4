@@ -10,6 +10,7 @@ class SampleExamScreen extends StatefulWidget {
 class _SampleExamScreenState extends State<SampleExamScreen> {
   bool isChecked1 = false;
   bool isChecked2 = false;
+  bool swapStart = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,14 @@ class _SampleExamScreenState extends State<SampleExamScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 30),
                 child: ListTile(
-                  title: Text("Vorbereitung"),
-                  subtitle: Text("Auf den Wissenscheck 4"),
+                  title: Text(
+                    "Vorbereitung",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: Text(
+                    "Auf den Wissenscheck 4",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   leading: Checkbox(
                     value: isChecked1,
                     activeColor: Colors.white,
@@ -46,8 +53,10 @@ class _SampleExamScreenState extends State<SampleExamScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 30),
                 child: ListTile(
-                  title: Text("Durchführung"),
-                  subtitle: Text("Des Wissenscheck 4"),
+                  title: Text("Durchführung",
+                      style: TextStyle(color: Colors.white)),
+                  subtitle: Text("Des Wissenscheck 4",
+                      style: TextStyle(color: Colors.white)),
                   leading: Checkbox(
                     value: isChecked2,
                     activeColor: Colors.white,
@@ -60,12 +69,24 @@ class _SampleExamScreenState extends State<SampleExamScreen> {
                 ),
               ),
               Column(
+                mainAxisAlignment: swapStart
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite, color: Colors.red),
-                  Icon(Icons.circle, color: Colors.green),
-                  Icon(Icons.star, color: Colors.blue),
+                  Icon(Icons.favorite, color: Colors.red, size: 35),
+                  Icon(Icons.circle, color: Colors.green, size: 35),
+                  Icon(Icons.star, color: Colors.blue, size: 35),
                 ],
-              )
+              ),
+              SizedBox(height: 100),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    swapStart = !swapStart;
+                  });
+                },
+                child: Text("Swap"),
+              ),
             ],
           ),
         ));
