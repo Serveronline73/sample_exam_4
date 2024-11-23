@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SampleExamScreen extends StatelessWidget {
+class SampleExamScreen extends StatefulWidget {
   const SampleExamScreen({super.key});
+
+  @override
+  State<SampleExamScreen> createState() => _SampleExamScreenState();
+}
+
+class _SampleExamScreenState extends State<SampleExamScreen> {
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,23 +25,35 @@ class SampleExamScreen extends StatelessWidget {
             children: [
               Center(
                 child: CircleAvatar(
-                  radius: 90,
+                  radius: 100,
                   backgroundImage: AssetImage("assets/moon.png"),
                 ),
               ),
-              CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                value: true,
-                onChanged: (value) {},
+              ListTile(
                 title: Text("Vorbereitung"),
                 subtitle: Text("Auf den Wissenscheck 4"),
+                leading: Checkbox(
+                  value: isChecked1,
+                  activeColor: Colors.white,
+                  onChanged: (newBool) {
+                    setState(() {
+                      isChecked1 = newBool!;
+                    });
+                  },
+                ),
               ),
-              CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                value: true,
-                onChanged: (value) {},
+              ListTile(
                 title: Text("Durchführung"),
                 subtitle: Text("Des Wissenscheck 4"),
+                leading: Checkbox(
+                  value: isChecked2,
+                  activeColor: Colors.white,
+                  onChanged: (newBool) {
+                    setState(() {
+                      isChecked2 = newBool!;
+                    });
+                  },
+                ),
               ),
             ],
           ),
