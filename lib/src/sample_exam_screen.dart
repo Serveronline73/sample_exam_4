@@ -5,9 +5,17 @@ class SampleExamScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Versuche hier die Aufgabe zu lösen.'),
-      ),
-    );
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text("Probe Wissenscheck 4"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: CircleAvatar(radius: 80),
+            ),
+          ],
+        ));
   }
 }
